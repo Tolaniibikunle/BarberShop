@@ -6,7 +6,7 @@ import com.ardmore.quarters.gentlemens.entity.Appointment;
 import com.ardmore.quarters.gentlemens.entity.Customer;
 import com.ardmore.quarters.gentlemens.entity.Employee;
 
-public interface IAppointment {
+public interface IAppointmentDAO {
 	List<Appointment> getAllAppointments();
 	Appointment getAppointmentById(int appointmentId);
 	void addAppointment(Appointment appointment);

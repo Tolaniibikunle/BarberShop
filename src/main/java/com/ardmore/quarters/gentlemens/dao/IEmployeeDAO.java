@@ -2,11 +2,10 @@ package com.ardmore.quarters.gentlemens.dao;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
 
 import com.ardmore.quarters.gentlemens.entity.Employee;
 
-public interface IEmployee {
+public interface IEmployeeDAO {
 
 	List<Employee> getAllEmployees();
 	Employee getEmployeeById(int employeeId);
