@@ -57,12 +57,12 @@ public class AppointmentDAOImpl implements IAppointmentDAO {
 	}
 
 	@Override
-	public boolean appointmentExists(int appointmentId, Employee employeeId, Customer customerId, String time,
+	public boolean appointmentExists( Employee employeeId, Customer customerId, String time,
 			String date, double price, String status) {
 		String hql = "FROM Appointment as appointment WHERE appointment.appointmentId = ? and appointment.employeeId = ? and appointment.customerId = ? "
 				+ "and appointment.time = ? and appointment.date = ? and appointment.price = ? and appointment.status = ?";
-		int parameters = entityManager.createNamedQuery(hql).setParameter(1, appointmentId).setParameter(2, employeeId).setParameter(3, customerId).
-				setParameter(4, time).setParameter(5, date).setParameter(6, price).setParameter(7, status).getResultList().size();
+		int parameters = entityManager.createNamedQuery(hql).setParameter(1, employeeId).setParameter(2, customerId).
+				setParameter(3, time).setParameter(4, date).setParameter(5, price).setParameter(6, status).getResultList().size();
 		if(parameters !=0 || parameters>0){
 			return true;
 		} else {

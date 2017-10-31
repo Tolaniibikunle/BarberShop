@@ -1,4 +1,4 @@
-package com.ardmore.quarters.gentlemens;
+package com.ardmore.quarters.gentlemens.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

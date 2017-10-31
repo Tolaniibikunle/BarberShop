@@ -57,12 +57,12 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 	}
 
 	@Override
-	public boolean employeeExists(int employeeId, String firstName, String lastName, String phoneNumber, String email,
+	public boolean employeeExists(String firstName, String lastName, String phoneNumber, String email,
 			String address, String age, String gender, String experience) {
 		String hql = "FROM Employee as employee WHERE employee.employeeId = ? and employee.firstName = ? and employee.lastName = ? and employee.phoneNumber = ? "
 				+ "and employee.email = ? and employee.address = ? and employee.age = ? and employee.gender = ? and employee.experience ?";
-		int parameters = entityManager.createNamedQuery(hql).setParameter(1, employeeId).setParameter(2, firstName).setParameter(3, lastName).setParameter(4, phoneNumber).
-				setParameter(5, email).setParameter(6, address).setParameter(7, age).setParameter(8, gender).setParameter(9, experience).getResultList().size();
+		int parameters = entityManager.createNamedQuery(hql).setParameter(1, firstName).setParameter(2, lastName).setParameter(3, phoneNumber).
+				setParameter(4, email).setParameter(5, address).setParameter(6, age).setParameter(7, gender).setParameter(8, experience).getResultList().size();
 		if(parameters !=0  || parameters>0){
 			return true;
 		}else{

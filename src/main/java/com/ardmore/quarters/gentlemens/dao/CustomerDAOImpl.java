@@ -12,7 +12,7 @@ import com.ardmore.quarters.gentlemens.entity.Customer;
 
 @Transactional
 @Repository
-public class CustomerDAOaImpl implements ICustomerDAO {
+public class CustomerDAOImpl implements ICustomerDAO {
 
 	@PersistenceContext
 	private EntityManager entityManager;

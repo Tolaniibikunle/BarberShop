@@ -12,7 +12,7 @@ public interface IAppointmentDAO {
 	void addAppointment(Appointment appointment);
 	void updateAppointment(Appointment appointment);
 	void deteleAppointment(int appointmentId);
-	boolean appointmentExists(int appointmentId, Employee employeeId, Customer customerId, String time, String date,
+	boolean appointmentExists(Employee employeeId, Customer customerId, String time, String date,
 			double price, String status);
 
 }
