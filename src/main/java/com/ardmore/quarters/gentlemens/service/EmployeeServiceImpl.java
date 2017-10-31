@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	 * look at this again 
 	 */
 	@Override
-	public boolean createEmployee(Employee employee) {
+	public boolean addEmployee(Employee employee) {
 		boolean employeeInDB = employeeDAO.employeeExists(employee.getFirstName(), employee.getLastName(), 
 				employee.getPhoneNumber(), employee.getEmail(), employee.getAddress(), employee.getAge(), employee.getGender(), employee.getExperience());
 				

@@ -23,7 +23,7 @@ public class AppointmentServiceImpl implements IAppoinmtnetService {
 	}
 
 	@Override
-	public boolean createAppointment(Appointment appointment) {
+	public boolean addAppointment(Appointment appointment) {
 		boolean appointmentInDB = appointmentDAO.appointmentExists( appointment.getEmployeeId(), appointment.getCustomerId(), appointment.getTime(),
 				appointment.getDate(), appointment.getPrice(), appointment.getStatus());
 		if(appointmentInDB){

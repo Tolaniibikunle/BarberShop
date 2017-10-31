@@ -7,7 +7,7 @@ import com.ardmore.quarters.gentlemens.entity.Employee;
 public interface IEmployeeService {
 List<Employee> getAllEmployees();
 Employee getEmployeeById(int employeeId);
-boolean createEmployee(Employee employee);
+boolean addEmployee(Employee employee);
 void updateEmployee(Employee employee);
 void deleteEmployee(int employeeId);
 }

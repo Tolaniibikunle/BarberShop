@@ -7,7 +7,7 @@ import com.ardmore.quarters.gentlemens.entity.Appointment;
 public interface IAppoinmtnetService {
 	List<Appointment> getAllAppointments();
 	Appointment getAppoinmentById(int appointmentId);
-	boolean createAppointment(Appointment appointment);
+	boolean addAppointment(Appointment appointment);
 	void updateAppointment(Appointment appointment);
 	void deleteAppointment(int appointmentId);
 }

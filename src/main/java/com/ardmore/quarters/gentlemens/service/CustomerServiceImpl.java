@@ -15,31 +15,36 @@ public class CustomerServiceImpl implements ICustomerService{
 	private CustomerDAOImpl customerDAO;
 	@Override
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDAO.getAllCustomers();
 	}
 
 	@Override
 	public Customer getCustomerById(int customerId) {
-		// TODO Auto-generated method stub
-		return null;
+		Customer customer = customerDAO.getCusomterById(customerId);
+		return customer;
 	}
 
 	@Override
-	public boolean createCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addCustomer(Customer customer) {
+		boolean customterInDB = customerDAO.customerExists(customer.getCustomerId(),
+				customer.getFirstName(), customer.getLastName(), customer.getPhoneNumber());
+		if(customterInDB){
+			return false;
+		} else{
+			customerDAO.addCustomer(customer);
+			return true;
+		}
 	}
 
 	@Override
 	public void updateCustomer(Customer customer) {
-		// TODO Auto-generated method stub
+		customerDAO.updateCustomer(customer);
 		
 	}
 
 	@Override
 	public void deleteCustomer(int customerId) {
-		// TODO Auto-generated method stub
+	customerDAO.deleteCustomer(customerId);
 		
 	}
 
