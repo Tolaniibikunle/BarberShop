@@ -3,10 +3,12 @@ package com.ardmore.quarters.gentlemens.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ardmore.quarters.gentlemens.dao.AppointmentDAOImpl;
 import com.ardmore.quarters.gentlemens.entity.Appointment;
 
+@Service
 public class AppointmentServiceImpl implements IAppoinmtnetService {
 
 	@Autowired

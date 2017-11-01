@@ -21,26 +21,26 @@ import com.ardmore.quarters.gentlemens.entity.Appointment;
 import com.ardmore.quarters.gentlemens.service.AppointmentServiceImpl;
 
 @RestController
-@RequestMapping("createAppointment")
+@RequestMapping("/createAppointment")
 public class AppointmentController {
 	
 	@Autowired
 	private AppointmentServiceImpl appointmentService;
 	
 	
-	@GetMapping("appointment/{id}")
+	@GetMapping("/appointment/{id}")
 	public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") Integer id){
 		Appointment appointment = appointmentService.getAppoinmentById(id);
 		return new ResponseEntity<Appointment>(appointment, HttpStatus.OK);
 	}
 	
-	@GetMapping("appointments")
+	@GetMapping("/appointments")
 	public ResponseEntity<List<Appointment>> getAllAppointments(){
 		List<Appointment> appointmentList = appointmentService.getAllAppointments();
 		return new ResponseEntity<List<Appointment>>(appointmentList,HttpStatus.OK);
 	}
 	
-	@PostMapping("appointment")
+	@PostMapping("/appointment")
 	public ResponseEntity<Void> addAppointment(@RequestBody Appointment appointment, UriComponentsBuilder builder){
 		boolean newAppointment = appointmentService.addAppointment(appointment);
 		if(newAppointment == false){
@@ -51,13 +51,13 @@ public class AppointmentController {
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
-	@PutMapping("appointment")
+	@PutMapping("/appointment")
 	public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment){
 		appointmentService.updateAppointment(appointment);
 		return new ResponseEntity<Appointment>(appointment,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("appointment/{id{")
+	@DeleteMapping("/appointment/{id{")
 	public ResponseEntity<Void> deleteAppointment(@PathVariable("id") Integer id){
 		appointmentService.deleteAppointment(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

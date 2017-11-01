@@ -20,25 +20,25 @@ import com.ardmore.quarters.gentlemens.entity.Customer;
 import com.ardmore.quarters.gentlemens.service.CustomerServiceImpl;
 
 @RestController
-@RequestMapping("createCustomer")
+@RequestMapping("/createCustomer")
 public class CustomerController {
 
 	@Autowired
 	private CustomerServiceImpl customerService;
 	
-	@GetMapping("customer/{id}")
+	@GetMapping("/customer/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") Integer id){
 		Customer customer = customerService.getCustomerById(id);
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 	}
 	
-	@GetMapping("customers")
+	@GetMapping("/customers")
 	public ResponseEntity<List<Customer>> getAllCustomers(){
 		List<Customer> customerList = customerService.getAllCustomers();
 		return new ResponseEntity<List<Customer>>(customerList,HttpStatus.OK);
 	}
 	
-	@PostMapping("customer")
+	@PostMapping("/customer")
 	public ResponseEntity<Void> addCustomer(@RequestBody Customer customer, UriComponentsBuilder builder){
 		boolean newCustomer = customerService.addCustomer(customer);
 		if(newCustomer== false){
@@ -49,13 +49,13 @@ public class CustomerController {
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
-	@PutMapping("customer")
+	@PutMapping("/customer")
 	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
 		customerService.updateCustomer(customer);
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 }
 
-	@DeleteMapping("customer/{id}")
+	@DeleteMapping("/customer/{id}")
 	public ResponseEntity<Void> detleCustomer(@PathVariable("id") Integer id){
 		customerService.deleteCustomer(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

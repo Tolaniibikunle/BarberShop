@@ -20,25 +20,25 @@ import com.ardmore.quarters.gentlemens.entity.Employee;
 import com.ardmore.quarters.gentlemens.service.EmployeeServiceImpl;
 
 @RestController
-@RequestMapping("createEmployee")
+@RequestMapping("/createEmployee")
 public class EmployeeController {
 	
 @Autowired
 private EmployeeServiceImpl employeeService;
 //read
-@GetMapping("employees")
+@GetMapping("/employees")
 public ResponseEntity<List<Employee>> getAllEmployees(){
 	List<Employee> employeeList = employeeService.getAllEmployees();
 	return new ResponseEntity<List<Employee>>(employeeList,HttpStatus.OK);
 }
 //read
-@GetMapping("emloyee/{id}")
+@GetMapping("/emloyee/{id}")
 public ResponseEntity<Employee> getEmployeeByID(@PathVariable("id") Integer id){
 	Employee employee = employeeService.getEmployeeById(id);
 	return new ResponseEntity<Employee>(employee,HttpStatus.OK);
 }
 //create
-@PostMapping("employee")
+@PostMapping("/employee")
 public ResponseEntity<Void> addEmployee(@RequestBody Employee employee, UriComponentsBuilder builder){
 	boolean newEmployee = employeeService.addEmployee(employee);
 	if(newEmployee == false){
@@ -50,7 +50,7 @@ public ResponseEntity<Void> addEmployee(@RequestBody Employee employee, UriCompo
 }
 
 //update
-@PutMapping("employee")
+@PutMapping("/employee")
 public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
 	employeeService.updateEmployee(employee);
 	return new ResponseEntity<Employee>(employee, HttpStatus.OK);
