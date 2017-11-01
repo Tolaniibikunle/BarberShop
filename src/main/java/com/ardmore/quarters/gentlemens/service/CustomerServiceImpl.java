@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ardmore.quarters.gentlemens.dao.CustomerDAOImpl;
 import com.ardmore.quarters.gentlemens.entity.Customer;
 
-@Service
+Service
 public class CustomerServiceImpl implements ICustomerService{
 
 	@Autowired
