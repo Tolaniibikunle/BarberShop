@@ -29,8 +29,12 @@ public class Appointment {
 	@Column(name="status")
 	private String status;
 
+	public Appointment() {
+
+	}
+
 	public Appointment(int appointmentId, int employeeId, int customerId, String time, String date,
-			double price, String status) {
+					   double price, String status) {
 		
 		this.appointmentId = appointmentId;
 		this.employeeId = employeeId;

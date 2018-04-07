@@ -33,11 +33,12 @@ public class Employee {
 	private String gender;
 	@Column(name= "experience")
 	private String experience;
-	
-	
-	
+
+	public Employee() {
+	}
+
 	public Employee(int employeeId, String firstName, String lastName, String phoneNumber, String email, String address,
-			String age, String gender, String experience) {
+					String age, String gender, String experience) {
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;

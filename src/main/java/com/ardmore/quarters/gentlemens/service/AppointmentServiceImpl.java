@@ -1,12 +1,9 @@
 package com.ardmore.quarters.gentlemens.service;
 
-import java.util.List;
-
 import com.ardmore.quarters.gentlemens.dao.IAppointmentDAO;
+import com.ardmore.quarters.gentlemens.entity.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.ardmore.quarters.gentlemens.entity.Appointment;
 
 @Service
 public class AppointmentServiceImpl implements IAppointmentService {
@@ -27,7 +24,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
 	@Override
 	public boolean addAppointment(Appointment appointment) {
-		boolean appointmentInDB = appointmentDAO.appointmentExists(appointment);
+		boolean appointmentInDB = appointmentDAO.findAllByDateAndTimeAndEmployeeId(appointment.getDate(),appointment.getTime(),String.valueOf(appointment.getEmployeeId()));
 		if(appointmentInDB){
 			return false;
 		}else{
