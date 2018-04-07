@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/createCustomer")
 public class CustomerController {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
@@ -30,7 +29,7 @@ public class CustomerController {
 		return new ResponseEntity<>(customerList,HttpStatus.OK);
 	}
 
-	@PostMapping("/customer")
+	@PostMapping( "/customer")
 	public ResponseEntity<Void> addCustomer(@RequestBody Customer customer){
 		boolean newCustomer = customerService.addCustomer(customer);
 		if(!newCustomer){

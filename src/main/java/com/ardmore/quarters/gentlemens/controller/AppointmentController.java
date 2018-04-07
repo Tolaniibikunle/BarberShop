@@ -1,6 +1,5 @@
 package com.ardmore.quarters.gentlemens.controller;
 
-import com.ardmore.quarters.gentlemens.config.Swaggerize;
 import com.ardmore.quarters.gentlemens.entity.Appointment;
 import com.ardmore.quarters.gentlemens.service.AppointmentServiceImpl;
 import org.slf4j.Logger;
@@ -11,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/createAppointment")
-@Swaggerize
 public class AppointmentController {
 
 	@Autowired
