@@ -14,25 +14,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/createAppointment")
 @Swaggerize
 public class AppointmentController {
-//
+
 	@Autowired
 	private AppointmentServiceImpl appointmentService;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AppointmentController.class);
-//
-//
-//	@GetMapping("/appointment/{id}")
-//	public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") Integer id){
-//		Appointment appointment = appointmentService.getAppoinmentById(id);
-//		return new ResponseEntity<Appointment>(appointment, HttpStatus.OK);
-//	}
-//
+
+
+	@GetMapping("/appointment/{id}")
+	public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") Integer id){
+		Appointment appointment = appointmentService.getAppointmentById(id);
+		return new ResponseEntity<>(appointment, HttpStatus.OK);
+	}
+
 	@GetMapping("/appointments")
 	public ResponseEntity<Iterable<Appointment>> getAllAppointments(){
 		Iterable<Appointment> appointmentList = appointmentService.getAllAppointments();
 		return new ResponseEntity<>(appointmentList,HttpStatus.OK);
 	}
-//
+
 	@PostMapping("/appointment")
 	public ResponseEntity<Void> addAppointment(@RequestBody Appointment appointment){
 		LOGGER.info("Add Appointment: {}", appointment);
@@ -42,17 +42,17 @@ public class AppointmentController {
 		}
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
-//
-//	@PutMapping("/appointment")
-//	public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment){
-//		appointmentService.updateAppointment(appointment);
-//		return new ResponseEntity<Appointment>(appointment,HttpStatus.OK);
-//	}
-//
-//	@DeleteMapping("/appointment/{id{")
-//	public ResponseEntity<Void> deleteAppointment(@PathVariable("id") Integer id){
-//		appointmentService.deleteAppointment(id);
-//		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-//	}
+
+	@PutMapping("/appointment")
+	public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment){
+		appointmentService.updateAppointment(appointment);
+		return new ResponseEntity<>(appointment,HttpStatus.OK);
+	}
+
+	@DeleteMapping("/appointment/{id{")
+	public ResponseEntity<Void> deleteAppointment(@PathVariable("id") Integer id){
+		appointmentService.deleteAppointment(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 //
 }
