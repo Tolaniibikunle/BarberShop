@@ -57,7 +57,12 @@
         	<groupId>org.springframework.data</groupId>
         	<artifactId>spring-data-commons</artifactId>
         </dependency>
-	</dependencies> 
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.197</version>
+		</dependency>
+</dependencies>
 	<build>
 		<plugins>
 			<plugin>
