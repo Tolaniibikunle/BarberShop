@@ -1,5 +1,6 @@
 package com.ardmore.quarters.gentlemens.controller;
 
+import com.ardmore.quarters.gentlemens.config.Swaggerrize;
 import com.ardmore.quarters.gentlemens.entity.Appointment;
 import com.ardmore.quarters.gentlemens.service.AppointmentServiceImpl;
 import org.slf4j.Logger;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@Swaggerrize
 @RestController
 public class AppointmentController {
 
@@ -46,7 +47,7 @@ public class AppointmentController {
 		return new ResponseEntity<>(appointment,HttpStatus.OK);
 	}
 
-	@DeleteMapping("/appointment/{id}")
+	@DeleteMapping("/appointment/{id} ")
 	public ResponseEntity<Void> deleteAppointment(@PathVariable("id") Integer id){
 		appointmentService.deleteAppointment(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
