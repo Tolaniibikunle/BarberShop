@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IEmployeeDAO extends CrudRepository<Employee,Integer>{
 
+    boolean findAllByFirstNameAndLastNameAndPhoneNumber(String firstName, String lastName, String phoneNumber);
 }
