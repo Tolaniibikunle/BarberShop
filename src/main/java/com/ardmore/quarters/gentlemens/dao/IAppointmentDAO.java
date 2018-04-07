@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface IAppointmentDAO extends CrudRepository<Appointment,Integer>{
-    boolean findAllByDateAndTimeAndEmployeeId(String date,String time,String employeeId);
+    Iterable<Appointment> findAllByDateAndTimeAndEmployeeId(String date,String time,int employeeId);
 }
