@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/createEmployee")
 public class EmployeeController {
 
 @Autowired
@@ -22,18 +21,18 @@ public ResponseEntity<Iterable<Employee>> getAllEmployees(){
 }
 
 
-@GetMapping("/emloyee/{id}")
+@GetMapping("/employee/{id}")
 public ResponseEntity<Employee> getEmployeeByID(@PathVariable("id") Integer id){
 	Employee employee = employeeService.getEmployeeById(id);
 	return new ResponseEntity<>(employee,HttpStatus.OK);
 }
 
 
-@PostMapping(path = "/employee")
+@PostMapping(path = "/createEmployee")
 public ResponseEntity<Void> addEmployee(@RequestBody Employee employee){
 	boolean newEmployee = employeeService.addEmployee(employee);
 	if(!newEmployee){
-		return new ResponseEntity<>(HttpStatus.CONFLICT);
+		return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
 	}
 	return new ResponseEntity<>(HttpStatus.CREATED);
 }
