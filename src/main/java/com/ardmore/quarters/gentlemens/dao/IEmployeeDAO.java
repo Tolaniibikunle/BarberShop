@@ -4,14 +4,8 @@ import java.util.List;
 
 
 import com.ardmore.quarters.gentlemens.entity.Employee;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IEmployeeDAO {
+public interface IEmployeeDAO extends CrudRepository<Employee,Integer>{
 
-	List<Employee> getAllEmployees();
-	Employee getEmployeeById(int employeeId);
-	void addEmployee(Employee employee);
-	void updateEmployee(Employee employee);
-	void deleteEmployee(int employeeId);
-	boolean employeeExists(int employeeId, String firstName, String lastName, String phoneNumber, String email, String address,
-			String age, String gender, String experience);
 }
