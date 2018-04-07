@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.ardmore.quarters.gentlemens.entity.Appointment;
 
-public interface IAppoinmtnetService {
+public interface IAppointmentService {
 
 	Iterable<Appointment> getAllAppointments();
-//	Appointment getAppoinmentById(int appointmentId);
+	Appointment getAppointmentById(int appointmentId);
 	boolean addAppointment(Appointment appointment);
-//	void updateAppointment(Appointment appointment);
-//	void deleteAppointment(int appointmentId);
+	void updateAppointment(Appointment appointment);
+	void deleteAppointment(int appointmentId);
 
 }

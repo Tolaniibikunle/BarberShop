@@ -11,13 +11,11 @@ public class Appointment {
 	@Column(name="appointment_id")
 	private int appointmentId;
 	
-//	@Column(name="employee_id")
-	@OneToOne
-	private Employee employeeId;
+	@Column(name="employee_id")
+	private int employeeId;
 	
-//	@Column(name="customer_id")
-	@OneToOne
-	private Customer customerId;
+	@Column(name="customer_id")
+	private int customerId;
 	
 	@Column(name="app_time")
 	private String time;
@@ -31,7 +29,7 @@ public class Appointment {
 	@Column(name="status")
 	private String status;
 
-	public Appointment(int appointmentId, Employee employeeId, Customer customerId, String time, String date,
+	public Appointment(int appointmentId, int employeeId, int customerId, String time, String date,
 			double price, String status) {
 		
 		this.appointmentId = appointmentId;
@@ -51,19 +49,19 @@ public class Appointment {
 		this.appointmentId = appointmentId;
 	}
 
-	public Employee getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Employee employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
 
-	public Customer getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Customer customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 
