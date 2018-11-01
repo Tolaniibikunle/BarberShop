@@ -1,110 +1,51 @@
 package com.ardmore.quarters.gentlemens.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity(name = "appointment")
-@Table(name="appointment")
+@Table(name = "appointment")
 public class Appointment {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="appointment_id")
-	private int appointmentId;
-	
-	@Column(name="employee_id")
-	private int employeeId;
-	
-	@Column(name="customer_id")
-	private int customerId;
-	
-	@Column(name="app_time")
-	private String time;
-	
-	@Column(name="app_date")
-	private String date;
-	
-	@Column(name="price")
-	private double price;
-	
-	@Column(name="status")
-	private String status;
 
-	public Appointment() {
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "appointment_id")
+  private int appointmentId;
 
-	}
+  @Column(name = "employee_id")
+  private int employeeId;
 
-	public Appointment(int appointmentId, int employeeId, int customerId, String time, String date,
-					   double price, String status) {
-		
-		this.appointmentId = appointmentId;
-		this.employeeId = employeeId;
-		this.customerId = customerId;
-		this.time = time;
-		this.date = date;
-		this.price = price;
-		this.status = status;
-	}
+  @Column(name = "customer_id")
+  private int customerId;
 
-	public int getAppointmentId() {
-		return appointmentId;
-	}
+  @Column(name = "app_time")
+  private String time;
 
-	public void setAppointmentId(int appointmentId) {
-		this.appointmentId = appointmentId;
-	}
+  @Column(name = "app_date")
+  private String date;
 
-	public int getEmployeeId() {
-		return employeeId;
-	}
+  @Column(name = "price")
+  private double price;
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
-	}
+  @Column(name = "status")
+  private String status;
 
-	public int getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	
-	
-	
-	
-	
-
+  @Override
+  public String toString() {
+    return "Appointment{" +
+        "appointmentId=" + appointmentId +
+        ", employeeId=" + employeeId +
+        ", customerId=" + customerId +
+        ", time='" + time + '\'' +
+        ", date='" + date + '\'' +
+        ", price=" + price +
+        ", status='" + status + '\'' +
+        '}';
+  }
 }

@@ -1,0 +1,20 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+barbershop:
+  swagger:
+    enabled: true
+    title: Gentlemen;s Quarters API
+    description: Api for barbershop daily scheduling and website functions
+    version: @project.version@
+    termsOfServiceUrl: tos
+    license: Apache 2.0
+    licenseUrl: https://www.apache.org/licenses/LICENSE-2.0
