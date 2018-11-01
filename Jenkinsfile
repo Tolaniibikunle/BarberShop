@@ -35,8 +35,8 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit 'build/test-results/**/*.xml'
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            junit 'target/surefire-reports/*.xml'
         }
     }
 }
