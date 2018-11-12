@@ -22,7 +22,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
     @Autowired private JavaMailSender javaMailSender;
 
-    @Value("${}")
+    @Value("${barbershop.email.address}")
     private String systemEmail;
 
     @Override
