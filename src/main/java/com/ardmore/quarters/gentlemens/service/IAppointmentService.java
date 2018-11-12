@@ -4,13 +4,13 @@ import com.ardmore.quarters.gentlemens.entity.Appointment;
 
 public interface IAppointmentService {
 
-  Iterable<Appointment> getAllAppointments();
+    Iterable<Appointment> getAllAppointments();
 
-  Appointment getAppointmentById(int appointmentId);
+    Appointment getAppointmentById(int appointmentId);
 
-  boolean addAppointment(Appointment appointment);
+    boolean addAppointment(Appointment appointment);
 
-  void updateAppointment(Appointment appointment);
+    void updateAppointment(Appointment appointment);
 
-  void deleteAppointment(int appointmentId);
+    void deleteAppointment(int appointmentId);
 }

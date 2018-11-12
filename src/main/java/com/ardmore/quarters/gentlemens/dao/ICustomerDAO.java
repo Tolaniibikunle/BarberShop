@@ -4,10 +4,10 @@ import com.ardmore.quarters.gentlemens.entity.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ICustomerDAO extends CrudRepository<Customer, Integer> {
-  boolean findAllByFirstNameAndLastNameAndPhoneNumber(
-      String firstName, String lastName, String phoneNumber);
+    boolean findAllByFirstNameAndLastNameAndPhoneNumber(
+            String firstName, String lastName, String phoneNumber);
 
-  Customer findByCustomerId(int customerId);
+    Customer findByCustomerId(int customerId);
 
-  void deleteByCustomerId(int customerId);
+    void deleteByCustomerId(int customerId);
 }

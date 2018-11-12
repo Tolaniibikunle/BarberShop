@@ -8,13 +8,17 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: false
 
 barbershop:
   swagger:
     enabled: true
-    title: Gentlemen;s Quarters API
+    title: Gentlemens Quarters API
     description: Api for barbershop daily scheduling and website functions
     version: @project.version@
     termsOfServiceUrl: tos
     license: Apache 2.0
     licenseUrl: https://www.apache.org/licenses/LICENSE-2.0
+  email:
+    address: test@google.com

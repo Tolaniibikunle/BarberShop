@@ -3,6 +3,7 @@ package com.ardmore.quarters.gentlemens.config;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import com.ardmore.quarters.gentlemens.config.swagger.ApiProperties;
 import org.junit.Before;
 import org.junit.Test;
 

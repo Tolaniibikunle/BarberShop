@@ -3,13 +3,13 @@ package com.ardmore.quarters.gentlemens.service;
 import com.ardmore.quarters.gentlemens.entity.Customer;
 
 public interface ICustomerService {
-  Iterable<Customer> getAllCustomers();
+    Iterable<Customer> getAllCustomers();
 
-  Customer getCustomerById(int customerId);
+    Customer getCustomerById(int customerId);
 
-  boolean addCustomer(Customer customer);
+    boolean addCustomer(Customer customer);
 
-  void updateCustomer(Customer customer);
+    void updateCustomer(Customer customer);
 
-  void deleteCustomer(int customerId);
+    void deleteCustomer(int customerId);
 }
