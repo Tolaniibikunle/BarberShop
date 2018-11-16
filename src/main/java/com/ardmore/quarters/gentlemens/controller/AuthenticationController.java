@@ -4,7 +4,6 @@ import com.ardmore.quarters.gentlemens.config.swagger.Swaggerize;
 import com.ardmore.quarters.gentlemens.dto.LoginDTO;
 import com.ardmore.quarters.gentlemens.dto.UserDTO;
 import com.ardmore.quarters.gentlemens.entity.User;
-import com.ardmore.quarters.gentlemens.exception.EmailExistsException;
 import com.ardmore.quarters.gentlemens.exception.InvalidTokenException;
 import com.ardmore.quarters.gentlemens.exception.UserAlreadyExistsException;
 import com.ardmore.quarters.gentlemens.service.IAuthenticationIdentifierService;
@@ -36,7 +35,7 @@ public class AuthenticationController {
     private ApplicationEventPublisher applicationEventPublisher;
 
     @PostMapping("/register")
-    public ResponseEntity<User> createNewUser(@RequestBody UserDTO userDTO, HttpServletRequest request) throws EmailExistsException {
+    public ResponseEntity<User> createNewUser(@RequestBody UserDTO userDTO, HttpServletRequest request) {
         User user = userService.registerNewUserAccount(userDTO);
         if (user != null) {
             String appUrl = appUrl(request);
