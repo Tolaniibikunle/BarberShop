@@ -1,14 +1,15 @@
 package com.ardmore.quarters.gentlemens.controller;
 
 import com.ardmore.quarters.gentlemens.config.swagger.Swaggerize;
+import com.ardmore.quarters.gentlemens.dao.IVerificationTokenDAO;
 import com.ardmore.quarters.gentlemens.dto.LoginDTO;
 import com.ardmore.quarters.gentlemens.dto.UserDTO;
 import com.ardmore.quarters.gentlemens.entity.User;
 import com.ardmore.quarters.gentlemens.exception.InvalidTokenException;
 import com.ardmore.quarters.gentlemens.exception.UserAlreadyExistsException;
-import com.ardmore.quarters.gentlemens.service.IAuthenticationIdentifierService;
-import com.ardmore.quarters.gentlemens.service.IUserService;
+import com.ardmore.quarters.gentlemens.service.authentication.IAuthenticationIdentifierService;
 import com.ardmore.quarters.gentlemens.service.registration.OnRegistrationCompleteEvent;
+import com.ardmore.quarters.gentlemens.service.user.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-@RestController("/auth")
+@RestController
+@RequestMapping("/auth")
 @Swaggerize
 public class AuthenticationController {
 
@@ -33,6 +35,9 @@ public class AuthenticationController {
 
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
+
+    @Autowired
+    private IVerificationTokenDAO verificationTokenDAO;
 
     @PostMapping("/register")
     public ResponseEntity<User> createNewUser(@RequestBody UserDTO userDTO, HttpServletRequest request) {
@@ -51,6 +56,7 @@ public class AuthenticationController {
         final String result = userService.validateVerificationToken(token);
         if (result.equals("valid")) {
             final User user = userService.getUser(token);
+            verificationTokenDAO.deleteByTokenEquals(token);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
             LOGGER.error("Token Invalid: Token={} | TokenStatus={}", token, result);
@@ -68,9 +74,15 @@ public class AuthenticationController {
         }
     }
 
+    @GetMapping("/deactivateAccount")
+    public ResponseEntity<User> deactivateUser(@RequestParam("id") Integer id) {
+        userService.deactivateAccount(id);
+        return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+    }
+
 
     private String appUrl(HttpServletRequest request) {
-        return "https://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        return "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
     }
 
 }

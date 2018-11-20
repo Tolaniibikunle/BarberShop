@@ -1,4 +1,4 @@
-package com.ardmore.quarters.gentlemens.service;
+package com.ardmore.quarters.gentlemens.service.authentication;
 
 import com.ardmore.quarters.gentlemens.dao.IAuthenticationIdentifierDAO;
 import com.ardmore.quarters.gentlemens.dao.IUserDAO;
@@ -11,11 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class IAuthenticationIdentifierServiceImpl implements IAuthenticationIdentifierService {
 
-    @Autowired private IAuthenticationIdentifierDAO authenticationIdentifierDAO;
+    @Autowired
+    private IAuthenticationIdentifierDAO authenticationIdentifierDAO;
 
-    @Autowired private AuthenticationFactory authenticationFactory;
+    @Autowired
+    private AuthenticationFactory authenticationFactory;
 
-    @Autowired private IUserDAO userDAO;
+    @Autowired
+    private IUserDAO userDAO;
 
     @Override
     public User createNewUser(UserDTO userDTO) {
@@ -46,7 +49,6 @@ public class IAuthenticationIdentifierServiceImpl implements IAuthenticationIden
     }
 
 
-
     @Override
     public User loginUser(String email, String password) {
         AuthenticationIdentifier authenticationIdentifier = authenticationIdentifierDAO.findAuthenticationIdentifierByEmailAddressEquals(email);
@@ -56,5 +58,11 @@ public class IAuthenticationIdentifierServiceImpl implements IAuthenticationIden
         }
         return null;
     }
+
+    @Override
+    public void deleteUserByUserId(Long id) {
+        authenticationIdentifierDAO.deleteByIdEquals(id);
+    }
+
 
 }

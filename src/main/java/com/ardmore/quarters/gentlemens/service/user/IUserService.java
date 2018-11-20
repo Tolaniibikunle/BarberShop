@@ -1,4 +1,4 @@
-package com.ardmore.quarters.gentlemens.service;
+package com.ardmore.quarters.gentlemens.service.user;
 
 import com.ardmore.quarters.gentlemens.dto.UserDTO;
 import com.ardmore.quarters.gentlemens.entity.User;
@@ -11,6 +11,8 @@ public interface IUserService {
 
     User getUser(String verificationToken);
 
+    User getUserById(Integer id);
+
     void saveRegisteredUser(User user);
 
     void createVerificationToken(User user, String token);
@@ -18,5 +20,7 @@ public interface IUserService {
     VerificationToken getVerificationToken(String verificationToken);
 
     String validateVerificationToken(String token);
+
+    void deactivateAccount(Integer id);
 
 }

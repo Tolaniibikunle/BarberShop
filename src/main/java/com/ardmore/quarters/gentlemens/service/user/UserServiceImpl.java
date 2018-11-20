@@ -1,15 +1,19 @@
-package com.ardmore.quarters.gentlemens.service;
+package com.ardmore.quarters.gentlemens.service.user;
 
+import com.ardmore.quarters.gentlemens.dao.IAccountDeletionDAO;
 import com.ardmore.quarters.gentlemens.dao.IUserDAO;
 import com.ardmore.quarters.gentlemens.dao.IVerificationTokenDAO;
 import com.ardmore.quarters.gentlemens.dto.UserDTO;
+import com.ardmore.quarters.gentlemens.entity.AccountDeletetion;
 import com.ardmore.quarters.gentlemens.entity.User;
 import com.ardmore.quarters.gentlemens.entity.VerificationToken;
 import com.ardmore.quarters.gentlemens.exception.UserAlreadyExistsException;
+import com.ardmore.quarters.gentlemens.service.authentication.IAuthenticationIdentifierServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -22,6 +26,9 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IVerificationTokenDAO verificationTokenDAO;
+
+    @Autowired
+    private IAccountDeletionDAO accountDeletionDAO;
 
     @Override
     public User registerNewUserAccount(UserDTO userDTO) throws UserAlreadyExistsException {
@@ -39,6 +46,14 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUser(String verificationToken) {
         return null;
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+        Optional<User> optionalUser = userDAO.findById(id);
+        if (optionalUser.isPresent()) {
+            return optionalUser.get();
+        } else return null;
     }
 
     @Override
@@ -74,6 +89,16 @@ public class UserServiceImpl implements IUserService {
         user.setEnabled(true);
         userDAO.save(user);
         return "valid";
+    }
+
+    @Override
+    public void deactivateAccount(Integer id) {
+        Optional<User> user = userDAO.findById(id);
+        if (user.isPresent()) {
+            user.get().setEnabled(false);
+            userDAO.save(user.get());
+            accountDeletionDAO.save(new AccountDeletetion(user.get().getUserId(), user.get().getAuthId()));
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ardmore.quarters.gentlemens.config.mail;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "barbershop.email")
@@ -8,6 +9,7 @@ public class MailProperties {
     private String host;
     private int port;
     private String username;
+    @Value("${barbershop.email.password}")
     private String password;
     private boolean debug;
 

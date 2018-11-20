@@ -1,7 +1,6 @@
 package com.ardmore.quarters.gentlemens.controller;
 
 import com.ardmore.quarters.gentlemens.config.LoggerConsts;
-import com.ardmore.quarters.gentlemens.config.swagger.Swaggerize;
 import com.ardmore.quarters.gentlemens.entity.Employee;
 import com.ardmore.quarters.gentlemens.service.EmployeeServiceImpl;
 import org.slf4j.Logger;
@@ -11,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Swaggerize
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
