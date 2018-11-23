@@ -1,4 +1,4 @@
-package com.ardmore.quarters.gentlemens.service;
+package com.ardmore.quarters.gentlemens.service.authentication;
 
 import com.ardmore.quarters.gentlemens.entity.AuthenticationIdentifier;
 import com.google.common.hash.Hashing;

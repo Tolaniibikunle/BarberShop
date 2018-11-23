@@ -17,4 +17,8 @@ public interface IVerificationTokenDAO extends CrudRepository<VerificationToken,
     @Transactional
     void deleteAllExpiredSince(Date now);
 
+    @Modifying
+    @Transactional
+    void deleteByTokenEquals(String token);
+
 }

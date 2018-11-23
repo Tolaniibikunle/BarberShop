@@ -1,6 +1,6 @@
 package com.ardmore.quarters.gentlemens.exception;
 
-public class InvalidTokenException extends RuntimeException{
+public class InvalidTokenException extends RuntimeException {
 
     private static final long serialVersionUID = 458796123846L;
 

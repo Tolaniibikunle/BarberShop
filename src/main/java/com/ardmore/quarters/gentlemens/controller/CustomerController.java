@@ -1,7 +1,6 @@
 package com.ardmore.quarters.gentlemens.controller;
 
 import com.ardmore.quarters.gentlemens.config.LoggerConsts;
-import com.ardmore.quarters.gentlemens.config.swagger.Swaggerize;
 import com.ardmore.quarters.gentlemens.entity.Customer;
 import com.ardmore.quarters.gentlemens.service.CustomerServiceImpl;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Swaggerize
+
 @RestController
 public class CustomerController {
 

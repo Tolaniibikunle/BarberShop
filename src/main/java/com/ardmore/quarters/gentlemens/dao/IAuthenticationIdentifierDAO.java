@@ -7,4 +7,6 @@ public interface IAuthenticationIdentifierDAO extends CrudRepository<Authenticat
 
     AuthenticationIdentifier findAuthenticationIdentifierByEmailAddressEquals(String email);
 
+    void deleteByIdEquals(Long id);
+
 }

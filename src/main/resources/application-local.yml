@@ -22,8 +22,14 @@ barbershop:
     licenseUrl: https://www.apache.org/licenses/LICENSE-2.0
   email:
     address: gentlemens.quarters.tech@gmail.com
+    name: Gentlemen's Quarters
     host: smtp.gmail.com
     port: 587
     username: gentlemens.quarters.tech
-    password: O8z0Xq4MdxGq
+    password: ENC(6rTgW4e9FfdjUKt3NJ40OJYPbAujwyHAa4ZtiBFz/NY=)
     debug: true
+
+jasypt:
+  encryptor:
+    bean: encryptorBean
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:}
