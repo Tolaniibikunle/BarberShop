@@ -21,9 +21,9 @@ barbershop:
     license: Apache 2.0
     licenseUrl: https://www.apache.org/licenses/LICENSE-2.0
   email:
-    address: test@google.com
+    address: gentlemens.quarters.tech@gmail.com
     host: smtp.gmail.com
     port: 587
-    username: test
-    password: test
+    username: gentlemens.quarters.tech
+    password: O8z0Xq4MdxGq
     debug: true
