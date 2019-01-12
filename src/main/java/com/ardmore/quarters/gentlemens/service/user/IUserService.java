@@ -7,7 +7,7 @@ import com.ardmore.quarters.gentlemens.exception.UserAlreadyExistsException;
 
 public interface IUserService {
 
-    User registerNewUserAccount(UserDTO userDTO) throws UserAlreadyExistsException;
+    User registerNewUserAccount(UserDTO userDTO, Boolean isAdmin) throws UserAlreadyExistsException;
 
     User getUser(String verificationToken);
 

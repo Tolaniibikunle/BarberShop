@@ -1,6 +1,6 @@
 package com.ardmore.quarters.gentlemens.service;
 
-import com.ardmore.quarters.gentlemens.dao.IEmployeeDAO;
+import com.ardmore.quarters.gentlemens.repository.EmployeeRepository;
 import com.ardmore.quarters.gentlemens.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class EmployeeServiceImpl implements IEmployeeService {
 
     @Autowired
-    private IEmployeeDAO employeeDAO;
+    private EmployeeRepository employeeDAO;
 
     @Override
     public Iterable<Employee> getAllEmployees() {

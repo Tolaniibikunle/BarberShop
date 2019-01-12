@@ -1,6 +1,6 @@
 package com.ardmore.quarters.gentlemens.service;
 
-import com.ardmore.quarters.gentlemens.dao.IAppointmentDAO;
+import com.ardmore.quarters.gentlemens.repository.AppointmentRepository;
 import com.ardmore.quarters.gentlemens.entity.Appointment;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class AppointmentServiceImpl implements IAppointmentService {
 
     @Autowired
-    private IAppointmentDAO appointmentDAO;
+    private AppointmentRepository appointmentDAO;
 
     @Override
     public List<Appointment> getAllAppointments() {

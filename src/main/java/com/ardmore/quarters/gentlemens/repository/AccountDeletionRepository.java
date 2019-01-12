@@ -1,11 +1,11 @@
-package com.ardmore.quarters.gentlemens.dao;
+package com.ardmore.quarters.gentlemens.repository;
 
 import com.ardmore.quarters.gentlemens.entity.AccountDeletetion;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
 
-public interface IAccountDeletionDAO extends CrudRepository<AccountDeletetion, Long> {
+public interface AccountDeletionRepository extends CrudRepository<AccountDeletetion, Long> {
 
     void deleteByDeleteDateAfter(Date today);
 

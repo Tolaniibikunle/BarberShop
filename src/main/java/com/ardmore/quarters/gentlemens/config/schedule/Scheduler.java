@@ -1,6 +1,6 @@
 package com.ardmore.quarters.gentlemens.config.schedule;
 
-import com.ardmore.quarters.gentlemens.dao.IVerificationTokenDAO;
+import com.ardmore.quarters.gentlemens.repository.VerificationTokenRepository;
 import com.ardmore.quarters.gentlemens.service.AccountDeletionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ public class Scheduler {
     private static final long DAILY = 24 * 60 * 60 * 1000L;
 
     @Autowired
-    IVerificationTokenDAO verificationTokenDAO;
+    VerificationTokenRepository verificationTokenDAO;
 
     @Autowired
     AccountDeletionService accountDeletionService;

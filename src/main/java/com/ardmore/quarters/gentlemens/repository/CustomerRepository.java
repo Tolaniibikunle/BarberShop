@@ -1,9 +1,9 @@
-package com.ardmore.quarters.gentlemens.dao;
+package com.ardmore.quarters.gentlemens.repository;
 
 import com.ardmore.quarters.gentlemens.entity.Customer;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ICustomerDAO extends CrudRepository<Customer, Integer> {
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {
     boolean findAllByFirstNameAndLastNameAndPhoneNumber(
             String firstName, String lastName, String phoneNumber);
 

@@ -1,9 +1,9 @@
-package com.ardmore.quarters.gentlemens.dao;
+package com.ardmore.quarters.gentlemens.repository;
 
 import com.ardmore.quarters.gentlemens.entity.User;
 import org.springframework.data.repository.CrudRepository;
 
-public interface IUserDAO extends CrudRepository<User, Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
     User findDistinctByAuthId(Long authId);
 

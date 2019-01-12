@@ -1,24 +1,29 @@
 package com.ardmore.quarters.gentlemens.controller;
 
 import com.ardmore.quarters.gentlemens.config.swagger.Swaggerize;
-import com.ardmore.quarters.gentlemens.dao.IVerificationTokenDAO;
 import com.ardmore.quarters.gentlemens.dto.LoginDTO;
 import com.ardmore.quarters.gentlemens.dto.UserDTO;
 import com.ardmore.quarters.gentlemens.entity.User;
 import com.ardmore.quarters.gentlemens.exception.InvalidTokenException;
 import com.ardmore.quarters.gentlemens.exception.UserAlreadyExistsException;
+import com.ardmore.quarters.gentlemens.repository.VerificationTokenRepository;
 import com.ardmore.quarters.gentlemens.service.authentication.IAuthenticationIdentifierService;
 import com.ardmore.quarters.gentlemens.service.registration.OnRegistrationCompleteEvent;
 import com.ardmore.quarters.gentlemens.service.user.IUserService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
@@ -37,11 +42,14 @@ public class AuthenticationController {
     private ApplicationEventPublisher applicationEventPublisher;
 
     @Autowired
-    private IVerificationTokenDAO verificationTokenDAO;
+    private VerificationTokenRepository verificationTokenDAO;
+
+    //TODO: Add redirect url to env variables
+    private final String redirectUrl = "https://www.google.com";
 
     @PostMapping("/register")
-    public ResponseEntity<User> createNewUser(@RequestBody UserDTO userDTO, HttpServletRequest request) {
-        User user = userService.registerNewUserAccount(userDTO);
+    public ResponseEntity<User> createNewUser(@RequestBody UserDTO userDTO, @RequestParam("isAdmin") Boolean isAdmin, HttpServletRequest request) {
+        User user = userService.registerNewUserAccount(userDTO, isAdmin);
         if (user != null) {
             String appUrl = appUrl(request);
             applicationEventPublisher.publishEvent(new OnRegistrationCompleteEvent(user, request.getLocale(), appUrl));
@@ -52,12 +60,13 @@ public class AuthenticationController {
     }
 
     @GetMapping("/registrationConfirm")
-    public ResponseEntity<User> confirmRegistration(@RequestParam("token") String token) {
+    public ResponseEntity<User> confirmRegistration(@RequestParam("token") String token, HttpServletResponse httpServletResponse) {
         final String result = userService.validateVerificationToken(token);
         if (result.equals("valid")) {
             final User user = userService.getUser(token);
             verificationTokenDAO.deleteByTokenEquals(token);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            httpServletResponse.setHeader("Location", redirectUrl);
+            return new ResponseEntity<>(user, HttpStatus.MOVED_PERMANENTLY);
         } else {
             LOGGER.error("Token Invalid: Token={} | TokenStatus={}", token, result);
             throw new InvalidTokenException("Token Could Not Be Validated");

@@ -1,4 +1,4 @@
-package com.ardmore.quarters.gentlemens.dao;
+package com.ardmore.quarters.gentlemens.repository;
 
 import com.ardmore.quarters.gentlemens.entity.VerificationToken;
 import org.springframework.data.jpa.repository.Modifying;
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-public interface IVerificationTokenDAO extends CrudRepository<VerificationToken, Integer> {
+public interface VerificationTokenRepository extends CrudRepository<VerificationToken, Integer> {
 
     VerificationToken findByToken(String token);
 

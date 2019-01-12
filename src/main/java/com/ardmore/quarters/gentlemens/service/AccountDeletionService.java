@@ -1,8 +1,8 @@
 package com.ardmore.quarters.gentlemens.service;
 
-import com.ardmore.quarters.gentlemens.dao.IAccountDeletionDAO;
-import com.ardmore.quarters.gentlemens.dao.IAuthenticationIdentifierDAO;
-import com.ardmore.quarters.gentlemens.dao.IUserDAO;
+import com.ardmore.quarters.gentlemens.repository.AccountDeletionRepository;
+import com.ardmore.quarters.gentlemens.repository.AuthenticationIdentifierRepository;
+import com.ardmore.quarters.gentlemens.repository.UserRepository;
 import com.ardmore.quarters.gentlemens.entity.AccountDeletetion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +13,13 @@ import java.util.List;
 public class AccountDeletionService {
 
     @Autowired
-    IAccountDeletionDAO accountDeletionDAO;
+    AccountDeletionRepository accountDeletionDAO;
 
     @Autowired
-    IAuthenticationIdentifierDAO authenticationIdentifierDAO;
+    AuthenticationIdentifierRepository authenticationIdentifierDAO;
 
     @Autowired
-    IUserDAO userDAO;
+    UserRepository userDAO;
 
     public void deleteAccounts() {
         List<AccountDeletetion> accountDeletions = (List<AccountDeletetion>) accountDeletionDAO.findAll();

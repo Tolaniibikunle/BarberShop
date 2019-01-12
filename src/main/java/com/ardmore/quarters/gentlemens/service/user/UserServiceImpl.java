@@ -1,8 +1,8 @@
 package com.ardmore.quarters.gentlemens.service.user;
 
-import com.ardmore.quarters.gentlemens.dao.IAccountDeletionDAO;
-import com.ardmore.quarters.gentlemens.dao.IUserDAO;
-import com.ardmore.quarters.gentlemens.dao.IVerificationTokenDAO;
+import com.ardmore.quarters.gentlemens.repository.AccountDeletionRepository;
+import com.ardmore.quarters.gentlemens.repository.UserRepository;
+import com.ardmore.quarters.gentlemens.repository.VerificationTokenRepository;
 import com.ardmore.quarters.gentlemens.dto.UserDTO;
 import com.ardmore.quarters.gentlemens.entity.AccountDeletetion;
 import com.ardmore.quarters.gentlemens.entity.User;
@@ -19,24 +19,24 @@ import java.util.Optional;
 public class UserServiceImpl implements IUserService {
 
     @Autowired
-    private IUserDAO userDAO;
+    private UserRepository userDAO;
 
     @Autowired
     private IAuthenticationIdentifierServiceImpl authenticationIdentifierService;
 
     @Autowired
-    private IVerificationTokenDAO verificationTokenDAO;
+    private VerificationTokenRepository verificationTokenDAO;
 
     @Autowired
-    private IAccountDeletionDAO accountDeletionDAO;
+    private AccountDeletionRepository accountDeletionDAO;
 
     @Override
-    public User registerNewUserAccount(UserDTO userDTO) throws UserAlreadyExistsException {
+    public User registerNewUserAccount(UserDTO userDTO, Boolean isAdmin) throws UserAlreadyExistsException {
         if (emailExists(userDTO.getEmail())) {
             throw new UserAlreadyExistsException(
                     "There is an account with that email address: " + userDTO.getEmail());
         }
-        return authenticationIdentifierService.createNewUser(userDTO);
+        return authenticationIdentifierService.createNewUser(userDTO, isAdmin);
     }
 
     private boolean emailExists(String email) {

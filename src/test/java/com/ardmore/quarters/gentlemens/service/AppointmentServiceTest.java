@@ -3,7 +3,7 @@ package com.ardmore.quarters.gentlemens.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-import com.ardmore.quarters.gentlemens.dao.IAppointmentDAO;
+import com.ardmore.quarters.gentlemens.repository.AppointmentRepository;
 import com.ardmore.quarters.gentlemens.entity.Appointment;
 import com.ardmore.quarters.gentlemens.util.AppointmentUtil;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class AppointmentServiceTest {
 
   @Mock
-  private IAppointmentDAO appointmentDAO;
+  private AppointmentRepository appointmentDAO;
 
   @InjectMocks
   private AppointmentServiceImpl appointmentService;

@@ -1,6 +1,6 @@
 package com.ardmore.quarters.gentlemens.service;
 
-import com.ardmore.quarters.gentlemens.dao.ICustomerDAO;
+import com.ardmore.quarters.gentlemens.repository.CustomerRepository;
 import com.ardmore.quarters.gentlemens.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements ICustomerService {
 
     @Autowired
-    private ICustomerDAO customerDAO;
+    private CustomerRepository customerDAO;
 
     @Override
     public Iterable<Customer> getAllCustomers() {

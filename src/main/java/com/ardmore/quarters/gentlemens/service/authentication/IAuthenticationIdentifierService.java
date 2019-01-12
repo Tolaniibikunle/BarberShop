@@ -5,7 +5,7 @@ import com.ardmore.quarters.gentlemens.entity.User;
 
 public interface IAuthenticationIdentifierService {
 
-    User createNewUser(UserDTO userDTO);
+    User createNewUser(UserDTO userDTO, Boolean isAdmin);
 
     User loginUser(String email, String password);
 
