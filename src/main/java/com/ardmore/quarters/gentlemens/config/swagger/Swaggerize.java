@@ -1,4 +1,4 @@
-package com.ardmore.quarters.gentlemens.config;
+package com.ardmore.quarters.gentlemens.config.swagger;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Swaggerrize {
+public @interface Swaggerize {
 }
