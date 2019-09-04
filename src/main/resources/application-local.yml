@@ -1,3 +1,6 @@
+h2:
+  tcp:
+    enabled: true
 spring:
   h2:
     console:
@@ -10,6 +13,8 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     open-in-view: false
+  main:
+    allow-bean-definition-overriding: true
 
 barbershop:
   swagger:
@@ -26,8 +31,10 @@ barbershop:
     host: smtp.gmail.com
     port: 587
     username: gentlemens.quarters.tech
-    password: ENC(6rTgW4e9FfdjUKt3NJ40OJYPbAujwyHAa4ZtiBFz/NY=)
+    password: ENC(Z+o2GsXBXYfrMScMGoUpM0H7JSaMM30injtpC9pkpXo=)
     debug: true
+  registration:
+    url: http://localhost:4200/registrationConfirm/
 
 jasypt:
   encryptor:

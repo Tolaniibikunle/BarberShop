@@ -45,7 +45,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User getUser(String verificationToken) {
-        return null;
+        return userDAO.findUserByToken(verificationToken);
     }
 
     @Override

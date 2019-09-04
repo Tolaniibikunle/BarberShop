@@ -1,0 +1,4 @@
+INSERT INTO SERVICE ("ID", "BARBER_ID", "SERVICE_COST", "SERVICE_LENGTH", "SERVICE_NAME") VALUES
+    (1, 1, 25.50, '30', 'Haircut'),
+    (2, 1, 15.50, '30', 'Shape Up');
+

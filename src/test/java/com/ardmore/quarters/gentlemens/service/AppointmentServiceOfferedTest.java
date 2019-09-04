@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AppointmentServiceTest {
+public class AppointmentServiceOfferedTest {
 
   @Mock
   private AppointmentRepository appointmentDAO;

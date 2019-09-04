@@ -12,7 +12,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int appointmentId;
+    private long appointmentId;
 
     @Column(name = "employee_id")
     private int employeeId;

@@ -19,7 +19,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 @Component
-public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
+public class RegistrationListener implements ApplicationListener<OnUserEvent> {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(RegistrationListener.class);
 
@@ -38,8 +38,11 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     @Value("${barbershop.email.name}")
     private String emailName;
 
+    @Value("${barbershop.registration.url}")
+    private String registrationUrl;
+
     @Override
-    public void onApplicationEvent(OnRegistrationCompleteEvent event) {
+    public void onApplicationEvent(OnUserEvent event) {
         try {
             this.confirmRegistration(event);
         } catch (UnsupportedEncodingException e) {
@@ -47,7 +50,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         }
     }
 
-    private void confirmRegistration(final OnRegistrationCompleteEvent event) throws UnsupportedEncodingException {
+    private void confirmRegistration(final OnUserEvent event) throws UnsupportedEncodingException {
         final User user = event.getUser();
         final String token = UUID.randomUUID().toString();
         userService.createVerificationToken(user, token);
@@ -56,10 +59,10 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         javaMailSender.send(mimeMessagePreparator);
     }
 
-    private MimeMessagePreparator constructEmailMessage(OnRegistrationCompleteEvent event, User user, String token) {
+    private MimeMessagePreparator constructEmailMessage(OnUserEvent event, User user, String token) {
         final String recipientAddress = user.getEmail();
         final String subject = "Registration Confirmation";
-        final String confirmationUrl = event.getAppUrl() + "/auth/registrationConfirm?token=" + token;
+        final String confirmationUrl = registrationUrl + token;
         final String message =
                 "You registered successfully. Please click the below link to activate your account";
         final String userName = user.getFirstName() + " " + user.getLastName();
